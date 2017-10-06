@@ -14,7 +14,7 @@ puts 'Creating cities...'
 City.create!(
   name: 'Paris',
   zip_code: '75014',
-  department_id: Department.where(department_number: 75)
+  department_id: Department.where(department_number: 75).first.id
   )
 puts "#{City.last.name} ok"
 

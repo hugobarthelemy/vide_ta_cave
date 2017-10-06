@@ -1,2 +1,6 @@
-<h1>Products#index</h1>
-<p>Find me in app/views/products/index.html.erb</p>
+<h1>Products</h1>
+<% @products.each do |product| %>
+  <div class="product_card">
+    <%= product.name %> - <%= product.price %>€ - <%= product.category.name %> - <%= product.user.city.name %> (<%= product.user.city.department.department_number %>)
+  </div>
+<% end %>
