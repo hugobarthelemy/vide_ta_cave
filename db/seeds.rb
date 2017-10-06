@@ -1,7 +1,54 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+require 'database_cleaner'
+
+puts 'Launching seed'
+DatabaseCleaner.clean_with :truncation
+
+puts 'Creating department...'
+Department.create!(
+  name: 'Paris',
+  department_number: 75
+  )
+puts "#{Department.last.name} ok"
+
+puts 'Creating cities...'
+City.create!(
+  name: 'Paris',
+  zip_code: '75014',
+  department_id: Department.where(department_number: 75)
+  )
+puts "#{City.last.name} ok"
+
+puts 'Creating users...'
+pwd = "12345678"
+5.times do
+  User.create!(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    email: Faker::Internet.email,
+    password: pwd,
+    password_confirmation: pwd,
+    city_id: City.all.sample.id
+    )
+  puts "#{User.last.first_name} ok"
+end
+
+puts "Creating categories..."
+
+Category.create!(
+  name: 'voiture'
+  )
+puts "#{Category.last.name} ok"
+
+puts 'Creating products...'
+
+5.times do
+  Product.create!(
+    name: Faker::Vehicle.manufacture,
+    price: rand(1 .. 10) * 100,
+    category_id: Category.all.sample.id,
+    user_id: User.all.sample.id
+  )
+  puts "#{Product.last.name} ok"
+end
+
+puts 'Finished!'
