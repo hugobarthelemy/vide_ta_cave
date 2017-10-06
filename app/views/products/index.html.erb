@@ -1,9 +1,16 @@
 <div class="container">
   <div class="row">
+    <%= form_tag products_index_path, method: :get do %>
+      <%= text_field_tag :query, params[:query] %>
+      <%= submit_tag "Rechercher", name: nil %>
+    <% end %>
+  </div>
+  <div class="row">
     <h1>Les produits actuellement en vente</h1>
     <% @products.each do |product| %>
       <div class="product_card">
         <%= product.name %> - <%= product.price %>€ - <%= product.category.name %> - <%= product.user.city.name %> (<%= product.user.city.department.department_number %>)
+        <%= link_to product.name, product_path(product) %>
       </div>
     <% end %>
   </div>

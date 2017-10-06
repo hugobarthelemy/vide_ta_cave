@@ -1,8 +1,14 @@
 class ProductsController < ApplicationController
+  # include PgSearch
   skip_before_action :authenticate_user!, only: :index
+  # resources :search_by_name_and_category, only: [:index]
 
   def index
-    @products = Product.all
+    if params[:query].present?
+      @products = Product.search_by_name_and_category(params[:query])
+    else
+      @products = Product.all
+    end
   end
 
   def new
@@ -17,8 +23,12 @@ class ProductsController < ApplicationController
     redirect_to products_path
   end
 
+  def show
+    @product = Product.find_by(id: params[:id])
+  end
+
   private
   def product_params
-    params.require(:product).permit(:name, :price, :category_id)
+    params.require(:product).permit(:id, :name, :price, :category_id, :query)
   end
 end

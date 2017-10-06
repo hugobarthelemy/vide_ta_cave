@@ -34,14 +34,17 @@ end
 
 puts "Creating categories..."
 
-Category.create!(
-  name: 'voiture'
-  )
-puts "#{Category.last.name} ok"
+names = ["voiture", "bateau", "moto"]
+names.each do |name|
+  Category.create!(
+    name: name
+    )
+  puts "#{Category.last.name} ok"
+end
 
 puts 'Creating products...'
 
-5.times do
+10.times do
   Product.create!(
     name: Faker::Vehicle.manufacture,
     price: rand(1 .. 10) * 100,
