@@ -1,3 +1,5 @@
+{<img src="https://travis-ci.org/hugobarthelemy/vide_ta_cave.svg?branch=master" alt="Build Status" />}[https://travis-ci.org/hugobarthelemy/vide_ta_cave]
+
 You can also enjoy yourself here:
 https://vide-ta-cave.herokuapp.com/
 
