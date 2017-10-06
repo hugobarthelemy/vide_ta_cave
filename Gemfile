@@ -17,6 +17,7 @@ gem 'sass-rails'
 gem 'simple_form'
 gem 'uglifier'
 gem 'faker'
+gem 'database_cleaner'
 
 group :development, :test do
   gem 'pry-byebug'
@@ -25,5 +26,4 @@ group :development, :test do
   gem 'listen', '~> 3.0.5'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'database_cleaner'
 end
