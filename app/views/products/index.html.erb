@@ -1,6 +1,16 @@
-<h1>Products</h1>
-<% @products.each do |product| %>
-  <div class="product_card">
-    <%= product.name %> - <%= product.price %>€ - <%= product.category.name %> - <%= product.user.city.name %> (<%= product.user.city.department.department_number %>)
+<div class="container">
+  <div class="row">
+    <h1>Les produits actuellement en vente</h1>
+    <% @products.each do |product| %>
+      <div class="product_card">
+        <%= product.name %> - <%= product.price %>€ - <%= product.category.name %> - <%= product.user.city.name %> (<%= product.user.city.department.department_number %>)
+      </div>
+    <% end %>
   </div>
-<% end %>
+  <div class="row">
+    <h1>Toi aussi vide ta cave !</h1>
+    <a class="btn btn-success" href="/products/new">Dépose une annonce !</a>
+  </div>
+</div>
+
+

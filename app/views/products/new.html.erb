@@ -1,0 +1,6 @@
+<%= simple_form_for @product do |f| %>
+  <%= f.input :name %>
+  <%= f.input :price %>
+  <%= f.input :category_id, collection: @categories %>
+  <%= f.submit "Déposer votre annonce", class: "btn btn-primary" %>
+<% end %>
