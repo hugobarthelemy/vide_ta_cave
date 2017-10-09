@@ -23,6 +23,8 @@ https://github.com/hugobarthelemy/vide_ta_cave/projects/1
 It's automatic ;)
 ### Push on staging
 It's automatic ;)
+
+Go here : https://staging-vide-ta-cave.herokuapp.com/
 ### Push on production
 ```heroku pipelines:promote -r staging```
 
